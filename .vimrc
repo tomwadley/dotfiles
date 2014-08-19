@@ -1,6 +1,7 @@
-" To install vundle:
-" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" :BundleInstall (from inside vim)
+" To get going:
+" $ mkdir -p ~/.vim/tmp ~/.vim/backup
+" $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" $ vim +PluginInstall +qall
 
 set nocompatible
 filetype off
@@ -9,6 +10,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+Bundle 'railscasts'
 Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-surround'
 Bundle 'plasticboy/vim-markdown'
