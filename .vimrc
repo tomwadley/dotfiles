@@ -1,7 +1,6 @@
-" To get going:
-" $ mkdir -p ~/.vim/tmp ~/.vim/backup
-" $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" $ vim +PluginInstall +qall
+" To install vundle:
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" :BundleInstall (from inside vim)
 
 set nocompatible
 filetype off
@@ -10,11 +9,13 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'railscasts'
+Bundle 'jpo/vim-railscasts-theme'
 Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-surround'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'scrooloose/nerdtree'
+Bundle 'fatih/vim-go'
+Bundle 'wting/rust.vim'
 
 set showcmd
 
@@ -87,4 +88,9 @@ map <D-H> <C-w>h
 map <D-L> <C-w>l
 map <D-J> <C-w>j
 map <D-K> <C-w>k
+
+" gradle syntax highlighting
+au BufNewFile,BufRead *.gradle set filetype=groovy
+
+autocmd Filetype go setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 
