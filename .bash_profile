@@ -70,3 +70,5 @@ chruby ruby-1.9
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+# AWS cli completion
+complete -C aws_completer aws

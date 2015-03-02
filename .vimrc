@@ -94,3 +94,4 @@ au BufNewFile,BufRead *.gradle set filetype=groovy
 
 autocmd Filetype go setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 
+autocmd! GUIEnter * set vb t_vb=
