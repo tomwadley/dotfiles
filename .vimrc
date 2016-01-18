@@ -16,6 +16,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'scrooloose/nerdtree'
 Bundle 'fatih/vim-go'
 Bundle 'wting/rust.vim'
+Bundle 'freitass/todo.txt-vim'
 
 set showcmd
 
@@ -23,8 +24,13 @@ set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 
-colorscheme railscasts
+if has('gui_running')
+  colorscheme railscasts
+else
+  colorscheme desert
+endif
 set guioptions-=T  "remove toolbar
+set guioptions-=m  "remove menu
 
 filetype plugin on
 filetype plugin indent on
@@ -59,6 +65,8 @@ set smartcase
 set incsearch
 set hlsearch
 
+set nostartofline
+
 if has('gui_running')
   nnoremap <silent> <esc> :nohlsearch<return><esc>
   set lines=45 columns=100
@@ -71,8 +79,6 @@ nnoremap <C-t>     :tabnew<CR>
 inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
-
-set guifont="Ubuntu Mono R:size=11"
 
 map <F5> :setlocal spell! spelllang=en_gb<CR>
 map <F4> :NERDTreeToggle<CR>
@@ -89,9 +95,35 @@ map <D-L> <C-w>l
 map <D-J> <C-w>j
 map <D-K> <C-w>k
 
+" split navigation with alt
+map <A-h> <C-w>h
+map <A-l> <C-w>l
+map <A-j> <C-w>j
+map <A-k> <C-w>k
+
+" copy/paste
+map <C-c> "+y
+map <C-v> "+p
+imap <C-v> <Esc>"+pa
+:map <leader>p "0p
+
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
 autocmd Filetype go setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype text setlocal linebreak
 
 autocmd! GUIEnter * set vb t_vb=
+
+set guifont=Monospace\ 9
+" hidpi hack
+function! Scale()
+  set guifont=Monospace\ 11
+endfunction
+command! Scale call Scale()
+function! Retina()
+  set guifont=Monospace\ 9
+endfunction
+command! Retina call Retina()
+
+:nnoremap gz :!zeal --query "<cword>"&<CR><CR>
