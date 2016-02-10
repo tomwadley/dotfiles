@@ -78,9 +78,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-set-key (kbd "M-k") 'windmove-up)
 (global-set-key (kbd "M-j") 'windmove-down)
 
-;(setq auto-save-file-name-transforms `(("." . "~/.emacs.d/autosaves")))
-;(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
-;(setq backup-by-copying t)
+(setq backup-directory-alist
+      `((".*" . ,"~/.emacs.d/backups")))
+(setq auto-save-file-name-transforms
+      `((".*" ,"~/.emacs.d/autosaves" t)))
 
 (custom-set-variables
  '(custom-enabled-themes (quote (tango-dark)))
