@@ -1,9 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Prompt from Arch wiki
-#export PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
-export PS1=' \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
+export PS1=' \[\e[1;30m\]\D{%H%M%S} \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
 # VI mode for readline
 set -o vi
