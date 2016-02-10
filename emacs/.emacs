@@ -114,3 +114,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;Arch packages
 (add-to-list 'auto-mode-alist '("\\PKGBUILD\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.install\\'" . sh-mode))
+
+;(require 'git-gutter)
+;(global-git-gutter-mode t)
+;(git-gutter:linum-setup)
+
+;(require 'diff-hl-mode)
+(global-diff-hl-mode 1)
+(diff-hl-flydiff-mode)
