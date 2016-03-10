@@ -77,7 +77,7 @@ if [ "$(uname)" == "Linux" ]; then
   # Ruby via chruby + ruby-install
   source /usr/share/chruby/chruby.sh
   #source /usr/share/chruby/auto.sh
-  chruby ruby-1.9
+  chruby ruby-2
 
   # Node.js via nvm
   source /usr/share/nvm/init-nvm.sh
@@ -112,5 +112,5 @@ export PATH=$PATH:$GOPATH/bin
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-alias activatevirtualenv='source ~/var/virtualenvs/default/bin/activate'
+alias activatevirtualenv='source ~/var/virtualenvs/python2/bin/activate'
 
