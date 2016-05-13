@@ -53,6 +53,15 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized))))) ;; start maximized
 
+
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(setq org-directory "~/Sync/org")
+(setq org-agenda-files '("~/Sync/org"))
+(setq org-startup-indented t)
+
 (add-to-list 'load-path "/directory/containing/neotree/")
 (require 'neotree)
 (global-set-key [f4] 'neotree-toggle)
