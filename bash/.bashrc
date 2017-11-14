@@ -83,7 +83,7 @@ if [ "$(uname)" == "Linux" ]; then
 
   # Node.js via nvm
   source /usr/share/nvm/init-nvm.sh
-  nvm use 5 &> /dev/null
+  #nvm use 4.4.7 &> /dev/null
 
   # Vimpager
   #export PAGER='vimpager'
