@@ -51,7 +51,18 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-linum-mode t)
 
 (custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized))))) ;; start maximized
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(package-selected-packages
+   (quote
+    (company racer rust-mode yaml-mode which-key web-mode terraform-mode neotree multi-term minimap markdown-mode less-css-mode json-mode js2-mode highlight goto-last-change git-gutter evil-visualstar evil-org evil-magit dtrt-indent diff-hl)))
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil))
+ ;; start maximized
 
 
 (require 'org)
@@ -62,8 +73,16 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq org-agenda-files '("~/Sync/org"))
 (setq org-startup-indented t)
 
+(setq org-todo-keywords
+      '((sequence "TODO" "WAIT" "DONE"))
+      )
+(setq org-todo-keyword-faces
+      '(("WAIT" . "orange"))
+      )
+
 (add-to-list 'load-path "/directory/containing/neotree/")
 (require 'neotree)
+(setq neo-smart-open t)
 (global-set-key [f4] 'neotree-toggle)
 (add-hook 'neotree-mode-hook
 	  (lambda ()
@@ -92,10 +111,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq auto-save-file-name-transforms
       `((".*" ,"~/.emacs.d/autosaves" t)))
 
-(custom-set-variables
- '(custom-enabled-themes (quote (tango-dark)))
- '(scroll-bar-mode nil)
- '(tool-bar-mode nil))
+
 
 (progn(require 'comint)
 (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
@@ -109,6 +125,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (setq-default indent-tabs-mode nil)
 (setq js-indent-level 2)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -131,3 +148,32 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;(require 'diff-hl-mode)
 (global-diff-hl-mode 1)
 (diff-hl-flydiff-mode)
+
+;(modify-syntax-entry ?_ "w")
+(add-hook 'ruby-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w")))
+
+;; (with-eval-after-load 'evil
+;;     (defalias #'forward-evil-word #'forward-evil-symbol))
+
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "")
+
+(global-visual-line-mode t)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+;rust
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+
+(add-hook 'racer-mode-hook #'company-mode)
+
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)

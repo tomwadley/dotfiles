@@ -73,6 +73,8 @@ if [ "$(uname)" == "Linux" ]; then
   alias grep='grep --color --exclude-dir=.git'
   alias diff='colordiff -u'
   alias open='xdg-open'
+  alias e='emacsclient --alternate-editor="" -c -n'
+  alias edit='emacsclient --alternate-editor=""'
 
   # Ruby via chruby + ruby-install
   source /usr/share/chruby/chruby.sh
