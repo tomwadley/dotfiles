@@ -76,6 +76,10 @@ if [ "$(uname)" == "Linux" ]; then
   alias e='emacsclient --alternate-editor="" -c -n'
   alias edit='emacsclient --alternate-editor=""'
 
+  # Fix ctrl-arrow keys in vi mode
+  bind '"\e[1;5D": backward-word'
+  bind '"\e[1;5C": forward-word'
+
   # Ruby via chruby + ruby-install
   source /usr/share/chruby/chruby.sh
   #source /usr/share/chruby/auto.sh
