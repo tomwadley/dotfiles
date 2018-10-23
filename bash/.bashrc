@@ -1,7 +1,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PS1=' \[\e[1;30m\]\D{%H%M%S} \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
+export PS1=' \[\e[1;30m\]\D{%H:%M:%S} \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
+export PS2=' \[\e[1;32m\]>\[\e[m\] '
 
 # VI mode for readline
 set -o vi
@@ -69,12 +70,11 @@ if [ "$(uname)" == "Linux" ]; then
 
   # Aliases
   alias ls='ls -F --color=auto'
-  alias ll='ls -Fla'
+  alias ll='ls -la'
   alias grep='grep --color --exclude-dir=.git'
   alias diff='colordiff -u'
-  alias open='xdg-open'
-  alias e='emacsclient --alternate-editor="" -c -n'
-  alias edit='emacsclient --alternate-editor=""'
+  alias e='emacsclient --alternate-editor="" -t'
+  alias eg='emacsclient --alternate-editor="" -c -n'
 
   # Fix ctrl-arrow keys in vi mode
   bind '"\e[1;5D": backward-word'
@@ -88,6 +88,9 @@ if [ "$(uname)" == "Linux" ]; then
   # Node.js via nvm
   source /usr/share/nvm/init-nvm.sh
   #nvm use 4.4.7 &> /dev/null
+
+  # Dotnet
+  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
   # Vimpager
   #export PAGER='vimpager'
